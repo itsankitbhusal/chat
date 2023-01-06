@@ -5,10 +5,14 @@ const dotenv = require("dotenv");
 
 const cors = require("cors");
 
-const app = express();
-dotenv.config();
+const connectDB = require("./config/db");
 
+
+const app = express();
 app.use(cors());
+dotenv.config();
+connectDB();
+
 
 app.get("/", (req, res) => {
     res.send("Api is running");
