@@ -5,15 +5,18 @@ import { BrowserRouter } from "react-router-dom"
 
 
 import App from './App';
+import ChatProvider from './context/ChatProvider';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <ChatProvider>
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </ChatProvider>
   </BrowserRouter>
 );
 
