@@ -6,6 +6,7 @@ import { CgProfile } from "react-icons/cg"
 import React, { useState } from 'react'
 import { ChatState } from '../../../context/ChatProvider';
 import ProfileModal from './ProfileModal';
+import { useNavigate } from 'react-router-dom';
 
 
 const SideDrawer = () => {
@@ -14,7 +15,17 @@ const SideDrawer = () => {
     const [loading, setLoading] = useState(false);
     const [ladingChat, setLoadingChat] = useState();
 
+    const Navigate = useNavigate();
+
     const { user } = ChatState();
+
+    // logout
+    const logoutHandler = () => {
+        const logout = window.confirm("Are you sure you want to logout?");
+        if (!logout) return;
+        localStorage.removeItem("userInfo");
+        Navigate("/");
+    }
 
     return (
         <>
@@ -63,7 +74,7 @@ const SideDrawer = () => {
                             </ProfileModal>
 
                             <MenuDivider />
-                            <MenuItem gap=".5rem">
+                            <MenuItem gap=".5rem" onClick={logoutHandler}>
                                 <FiLogOut />
                                 Logout
                             </MenuItem>
