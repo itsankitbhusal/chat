@@ -9,6 +9,7 @@ import { ChatBox } from './components/misc/ChatBox';
 const Chat = () => {
 
     const { user } = ChatState();
+    const [fetchAgain, setFetchAgain] = useState(false);
 
     return (
         <>
@@ -21,8 +22,8 @@ const Chat = () => {
                     minH="90vh"
                     p='10px'
                 >
-                    {user && <MyChats />}
-                    {user && <ChatBox />}
+                    {user && <MyChats fetchAgain={fetchAgain} />}
+                    {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
                 </HStack>
             </div>
 

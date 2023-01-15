@@ -3,7 +3,7 @@ import { GrView } from "react-icons/gr"
 import React from 'react'
 
 const ProfileModal = ({ user, children }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
         <>
