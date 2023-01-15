@@ -11,6 +11,8 @@ const userRoutes = require("./routes/userRoutes");
 
 const chatRoutes = require("./routes/chatRoutes");
 
+const messageRoutes = require("./routes/messageRoutes");
+
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 const app = express();
@@ -27,6 +29,9 @@ app.get("/", (req, res) => {
 // user endpoint
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
+
+// message api
+app.use("/api/message", messageRoutes)
 
 // error handling middleware
 app.use(notFound);
