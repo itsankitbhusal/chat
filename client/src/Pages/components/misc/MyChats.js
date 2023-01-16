@@ -5,8 +5,9 @@ import React, { useEffect, useState } from 'react'
 import { ChatState } from '../../../context/ChatProvider'
 import ChatLoading from '../ChatLoading';
 import { getSender } from '../../../config/chatLogics';
+import GroupChatModel from './GroupChatModel';
 
-const MyChats = () => {
+const MyChats = ({ fetchAgain }) => {
     const [loggedUser, setLoggedUser] = useState(null);
     const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
     console.log(chats)
@@ -44,14 +45,12 @@ const MyChats = () => {
         setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
         fetchChats();
 
-    }, []);
+    }, [fetchAgain]);
 
     return (
         <Box
             display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
             flexDir="column"
-            // alignItems="center"
-            justifyContent="space-between"
             gap="1rem"
             p="3"
             minH="85vh"
@@ -69,10 +68,12 @@ const MyChats = () => {
                 alignItems="center"
             >
                 My Chats
-                <Button
-                    fontSize={{ base: "sm", md: "md" }}
-                    rightIcon={<IoMdAdd />}
-                >Group Chat</Button>
+                <GroupChatModel >
+                    <Button
+                        fontSize={{ base: "sm", md: "md" }}
+                        rightIcon={<IoMdAdd />}
+                    >Group Chat</Button>
+                </GroupChatModel>
             </Box>
             <Box
                 display="flex"

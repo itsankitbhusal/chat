@@ -4,9 +4,15 @@ import React from 'react'
 const UserListItem = ({ user, handleFunction }) => {
 
     // console.log("user data from userListItem", user)
+    // console.log("handleFunction from userListItem", handleFunction)
     return (
         <Box
-            onClick={handleFunction}
+            onClick={
+                () => {
+                    console.log("clicked on id: ", user._id)
+                    handleFunction(user);
+                }
+            }
             cursor="pointer"
             bg="#E8E8E8"
             _hover={{
