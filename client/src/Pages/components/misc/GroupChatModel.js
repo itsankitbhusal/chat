@@ -95,6 +95,7 @@ const GroupChatModel = ({ children }) => {
         }
     }
     const handleGroup = (userToAdd) => {
+        console.log("handle group", userToAdd)
         if (selectedUser.includes(userToAdd)) {
             toast({
                 title: "User already added",
@@ -149,7 +150,11 @@ const GroupChatModel = ({ children }) => {
                         {/* render search users */}
                         {
                             loading ? <p>Loading...</p> :
-                                searchResult?.slice(0, 5).map((user) => (<UserListItem key={user._id} user={user} handleFunction={() => handleGroup(user)} />)
+                                searchResult?.slice(0, 5).map((user) => (
+                                    <UserListItem key={user._id}
+                                        user={user}
+                                        handleFunction={() => handleGroup(user)} />
+                                )
                                 )
                         }
 

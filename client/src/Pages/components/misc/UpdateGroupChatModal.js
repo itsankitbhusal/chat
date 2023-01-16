@@ -244,12 +244,12 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
                         </FormControl>
                         {
                             loading ? <Spinner size="lg" /> : (
-                                searchResult?.slice(1, 5)?.map(user => {
+                                searchResult?.slice(1, 5)?.map(s => {
                                     return (
                                         <UserListItem
-                                            key={user._id}
-                                            user={user}
-                                            handelFunction={() => handelAddUser(user)}
+                                            key={s._id}
+                                            user={s}
+                                            handleFunction={handelAddUser}
                                         />
                                     )
                                 })

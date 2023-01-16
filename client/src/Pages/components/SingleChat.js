@@ -9,6 +9,8 @@ import UpdateGroupChatModal from './misc/UpdateGroupChatModal';
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const { user, selectedChat, setSelectedChat } = ChatState();
 
+    console.log("selectedChat", selectedChat)
+
     return (
         <>
             {selectedChat ?
@@ -33,11 +35,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 <ProfileModal user={getSenderFull(user, selectedChat.users)} />
                             </> : selectedChat.chatName
                         }
-
-                        <UpdateGroupChatModal
-                            fetchAgain={fetchAgain}
-                            setFetchAgain={setFetchAgain}
-                        />
+                        {
+                            // if selected chat is a group chat, show update group chat modal
+                            selectedChat.isGroupChat && <UpdateGroupChatModal
+                                fetchAgain={fetchAgain}
+                                setFetchAgain={setFetchAgain}
+                            />
+                        }
                     </Text>
                     {/* simple input box */}
                     <Box
